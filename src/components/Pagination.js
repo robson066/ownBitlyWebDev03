@@ -35,7 +35,7 @@ class Pagination extends React.Component {
             <Grid item
                   container
                   sm={12}
-                  md={8}
+                  md={12}
                   className='tablePagination-prev'>
               <Grid item
                     xs={3}>
