@@ -24,7 +24,7 @@ export class UtilsApi {
         'content-type': 'application/json'
       },
       mode: 'cors'
-    }).then(res => res.json());
+    }).then(res => UtilsApi.parseJson(res));
   }
 
   static requestWithBody(path, method, params) {
@@ -35,7 +35,7 @@ export class UtilsApi {
         'content-type': 'application/json'
       },
       mode: 'cors'
-    }).then(res => res.json());
+    }).then(res => UtilsApi.parseJson(res));
   }
 
   static uriEncodeParams(params = {}) {
@@ -51,4 +51,12 @@ export class UtilsApi {
 
     return paramsStringified ? `?${paramsStringified}` : '';
   }
+
+  static parseJson(str) {
+    return str.text().then((text) => {
+      return text ? JSON.parse(text) : {};
+    });
+  }
 }
+
+export default UtilsApi;
